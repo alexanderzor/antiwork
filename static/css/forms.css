@@ -1,0 +1,274 @@
+a.btn-dropdown, a.btn-dropdown:visited {
+	font-size: 18px;
+	color: #87b2d0;
+	padding: 0;
+}
+
+a.btn-dropdown:hover, a.btn-dropdown:active, a.btn-dropdown:focus {
+	color: #fff;
+	text-decoration: none;
+}
+
+.sub-nav-group ul a{
+	color: #87b2d0;
+	font-size: 12px;
+	-webkit-transition:0.3s linear all;
+	-moz-transition:0.3s linear all;
+	-o-transition:0.3s linear all;
+	transition:0.3s linear all;
+}
+
+.sub-nav-group ul a:hover {
+	color: #fff;
+	background: #87b2d0;
+	-webkit-transition:0.3s linear all;
+	-moz-transition:0.3s linear all;
+	-o-transition:0.3s linear all;
+	transition:0.3s linear all;
+}
+
+
+
+.button {
+	color: #fff;
+	font-family: 'Intro';
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	font-weight: 600;
+	text-transform: uppercase;
+	-webkit-box-shadow: 0px 1px 2px gray;
+	-moz-box-shadow: 0px 1px 2px gray;
+	box-shadow: 0px 1px 2px gray;
+	width: 220px;
+	height: 33px;
+
+	/* IE10 Consumer Preview */
+	background-image: -ms-linear-gradient(top, #EE2228 0%, #9F0406 100%);
+
+	/* Mozilla Firefox */
+	background-image: -moz-linear-gradient(top, #EE2228 0%, #9F0406 100%);
+
+	/* Opera */
+	background-image: -o-linear-gradient(top, #EE2228 0%, #9F0406 100%);
+
+	/* Webkit (Safari/Chrome 10) */
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #EE2228), color-stop(1, #9F0406));
+
+	/* Webkit (Chrome 11+) */
+	background-image: -webkit-linear-gradient(top, #EE2228 0%, #9F0406 100%);
+
+	/* W3C Markup, IE10 Release Preview */
+	background-image: linear-gradient(to bottom, #EE2228 0%, #9F0406 100%);
+
+}
+
+.button a {
+	color: #fff;
+	width: 100%;
+	height: 100%;
+}
+
+.button a:hover {
+	color: #fff;
+}
+
+dl.contacts {
+	margin: 38px 60px 20px 50px;
+}
+
+.contacts dt {
+	font-family: 'Intro';
+	color: #6996B5;
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: 200;
+	text-align: left;
+	padding-top: 10px;
+}
+
+.contacts dd input {
+	height: 35px;
+	padding-left: 5px;
+}
+
+.contacts dd input, .contacts dd textarea{
+	width: 100%;
+	border: 2px solid #6996B5;
+	color: #6996B5;
+}
+
+.contacts dd textarea {
+	resize: none;
+	height: auto;
+	padding: 5px;
+	margin-bottom: 15px;
+}
+
+
+.contacts .form-group {
+	width: 100%;
+}
+
+
+
+/* кнопка */
+.form-group .ui-selectmenu-button {
+	background: #fff;
+	border-radius: 0;
+	border-width: 2px;
+	border-color: #6794B3;
+	color: #6996B5;
+}
+
+/** cтрелка */
+.form-group .ui-selectmenu-button .ui-icon {
+	background: none;
+}
+.form-group .ui-selectmenu-button:before {
+	font-family: 'FontAwesome';
+	font-weight: normal;
+	font-style: normal;
+	display: block;
+	content: "\f0d7";
+	color: #6996B5;
+	position: absolute;
+	right: 10px;
+	top: 20%;
+}
+.form-group .ui-selectmenu-button[aria-expanded="true"]:before {
+	opacity: 0.6;
+}
+
+
+/* список */
+.form-group .ui-menu {
+	border-radius: 0;
+	border-width: 1px;
+	border-color: #6996B5;
+}
+
+/* елементы спика */
+.form-group .ui-menu .ui-menu-item:hover,
+.form-group .ui-menu .ui-menu-item.ui-state-focus {
+	background: #6996B5;
+	color: #fff;
+}
+
+
+/* **************** has-error ************** */
+
+/* кнопка */
+.form-group.has-warning .ui-selectmenu-button {
+	border-color: red;
+	color: red;
+}
+
+/* стрелка */
+.form-group.has-warning .ui-selectmenu-button:before {
+	color: red;
+}
+
+/* список */
+.form-group.has-warning .ui-menu {
+	border-color: red;
+}
+
+/* **************** has-success ************** */
+
+/* кнопка */
+.form-group.has-success .ui-selectmenu-button {
+	border-color: green;
+	color: green;
+}
+
+/* стрелка */
+.form-group.has-success .ui-selectmenu-button:before {
+	color: green;
+}
+
+/* список */
+.form-group.has-success .ui-menu {
+	border-color: green;
+}
+
+/* **************** has-warning ************** */
+
+/* кнопка */
+.form-group.has-warning .ui-selectmenu-button {
+	border-color: burlywood;
+	color: burlywood;
+}
+
+/* стрелка */
+.form-group.has-warning .ui-selectmenu-button:before {
+	color: burlywood;
+}
+
+/* список */
+.form-group.has-warning .ui-menu {
+	border-color: burlywood;
+}
+
+/* **************** has-light ************** */
+
+/* кнопка */
+.form-group.has-light .ui-selectmenu-button {
+    border-color: #fff;
+    color: #fff;
+    background: none;
+}
+
+/* стрелка */
+.form-group.has-light .ui-selectmenu-button:before {
+    color: #fff;
+}
+
+/* список */
+.form-group.has-light .ui-menu {
+    border-color: #fff;
+}
+
+/* **************** uppercase ************** */
+
+/* кнопка */
+.form-group.uppercase .ui-selectmenu-button {
+	text-transform: uppercase;
+}
+
+/* список */
+.form-group.uppercase .ui-menu {
+	text-transform: uppercase;
+}
+
+
+/* **************** full-width ************** */
+
+/* кнопка */
+.form-group.full-width .ui-selectmenu-button {
+	width: 100% !important;
+}
+
+/* кнопка */
+.form-group.small .ui-selectmenu-button {
+    height: 30px !important;
+    width: 150px !important;
+}
+
+
+
+.form-group .has-feedback input.form-control {
+	border-radius: 0 !important;
+}
+
+
+
+.article-header-red .form-group {
+	font-size: 12px;
+}
+
+
+
+
+
+

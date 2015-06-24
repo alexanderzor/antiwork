@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block main_content %}
+
+			<div class="col-xs-9">
+				<!--------------------------------------- main -------------------------------------->
+				<main>
+					<div class="bread-crumb">
+						<a href="{% url 'index' %}">Главная</a>
+						<a class="active" href="{% url 'news' %}">Новости</a>
+					</div>
+                    {% for new in news %}
+					<div class="article-header">
+						<span class="date"> {{new.date}} </span>
+					</div>
+					<div class="well">
+                        <h3> {{new.title}} </h3>
+						<p>
+							{{new.content1|safe}}
+						</p>
+						<a href="{% url 'new' new.id %}" class="show"> . . .</a>
+					</div>
+                    {% endfor %}
+
+					<ul class="pagination">
+						<li class="active"><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">...</a></li>
+						<li><a href="#">24</a></li>
+						<li>
+							<a href="#" class="pull-right">
+								<i class="fa fa-chevron-right"></i>
+							</a>
+						</li>
+						<li class="disabled pull-right">
+							<a href="#">
+								<i class="fa fa-chevron-left"></i>
+							</a>
+						</li>
+					</ul>
+				</main>
+			</div>
+{% endblock %}

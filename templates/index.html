@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block main_content %}
+			<div class="col-xs-9">
+				<!--------------------------------------- main -------------------------------------->
+				<main>
+					<p class="blue">
+						Внимание! Всегда проверяйте логины скайпов, номера асек, почту, электронные кошельки в сервисе
+						поиска по базе кидал. Это поможет вам уберечь свои средства и нервы.
+						<br />
+						На форуме действует система жалоб на конкретных его пользователей. Для оформления жалобы вы должны
+						быть зарегистрированы и предоставить доказательства на странице профиля пользователя. Внимание!
+						Всегда проверяйте логины скайпов, номера асек, почту, электронные кошельки в сервисе поиска по базе
+						кидал. Это поможет вам уберечь свои средства и нервы.
+						<br />
+						На форуме действует система жалоб на конкретных его пользователей. Для оформления жалобы
+						вы должны быть зарегистрированы и предоставить доказательства на странице профиля пользователя.
+						Внимание! Всегда проверяйте логины скайпов, номера асек, почту, электронные кошельки в сервисе
+					</p>
+
+
+                    {% for company in companies %}
+					<div class="well sm">
+						<div class="row">
+							<div class="col-xs-3 p-right">
+                                {% if company.image %}
+								<img class="company_image" src="{{ company.image.url }}" />
+                                {% endif %}
+							</div>
+							<div class="col-xs-9 p-left">
+
+                                    <div class="article-header">
+									<h2> {{ company.title }} </h2>
+								</div>
+
+								<div class="information">
+									<a class="reviews" href="{% url 'review' company.id %}"> {{company.feedbacks.count}} отзыва </a>
+									<a href="{% url 'review' company.id %}"> {{ company.city }} </a>
+									<a class="site" href="{{ company.url }}"> {{ company.url }} </a>
+								</div>
+
+								<p>
+									{{ company.short_description|safe}}
+								</p>
+								<a href="{% url 'review' company.id %}" class="show"> . . .</a>
+							</div>
+						</div>
+
+					</div>
+                    {% endfor %}
+
+
+
+					<ul class="pagination">
+						<li class="active"><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">...</a></li>
+						<li><a href="#">24</a></li>
+						<li>
+							<a href="#" class="pull-right">
+								<i class="fa fa-chevron-right"></i>
+							</a>
+						</li>
+						<li class="disabled pull-right">
+							<a href="#">
+								<i class="fa fa-chevron-left"></i>
+							</a>
+						</li>
+					</ul>
+				</main>
+			</div>
+{% endblock %}

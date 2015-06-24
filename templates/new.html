@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block main_content %}
+
+			<div class="col-xs-9">
+				<!--------------------------------------- main -------------------------------------->
+				<main>
+					<div class="bread-crumb">
+						<a href="{% url 'index' %}">Главная</a>
+						<a href="{% url 'news' %}">Новости</a>
+						<a class="active" href="{% url 'new' key %}">{{new.title}}</a>
+					</div>
+					<div class="article-header">
+						<span class="date"> {{new.date}} </span>
+					</div>
+					<div class="well">
+						<h3> {{new.title}} </h3>
+
+                        {{new.content2|safe}}
+
+
+					</div>
+				</main>
+			</div>
+
+    <div class="comment-block-wrap">
+        <div class="comment-block">
+            <p class="add-comment">Добавить комментарий</p>
+            <div class="add-comment-block">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <dl class="dl-horizontal contacts">
+									<dt class="dis-name">Ваше имя:</dt>
+									<dd>
+                                        <div class="form-group has-success has-feedback">
+
+
+                    <input id="id_name" maxlength="20" name="name" type="text" class="form-control dis-name" />
+                                            </div>
+									</dd>
+                        <dt>Комментарий:</dt>
+									<dd>
+                                        <textarea cols="40" id="id_content" name="content" rows="5" placeholder="Текст Вашего сообщения..."></textarea>
+									</dd>
+                        <button class="button" type="submit"> Добавить комментарий </button>
+                        </dl>
+                </form>
+            </div>
+            {% for comment in comments %}
+            <div class="new-comment">
+                <div class="comment-name">{{comment.author}}</div>
+                <div class="comment-date">{{comment.date}}</div>
+                <p class="comment-text">{{comment.content}}</p>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block main_content %}
+
+			<div class="col-xs-9">
+				<!--------------------------------------- main -------------------------------------->
+				<main>
+					<div class="bread-crumb">
+						<a href="{% url 'index' %}">Главная</a>
+						<a class="active" href="{% url 'feedback' %}"> Форма обратной связи </a>
+					</div>
+
+					<div class="article-header">
+						<h1>Форма обратной связи</h1>
+					</div>
+					<div class="well">
+
+							<form action="" method="post">
+                                {% csrf_token %}
+                                <input name="what" id="anonymous" type="radio">
+                                <label class="label-1" for="anonymous">Анонимно</label>
+                                <input name="what" id="non-anonymous" type="radio">
+                                <label class="label-2" for="non-anonymous">Потдтверждено</label>
+								<dl class="dl-horizontal contacts">
+									<dt class="dis-name">Ваше имя:</dt>
+									<dd>
+										<div class="form-group has-success has-feedback">
+											<input id="id_first_name" maxlength="20" name="first_name" placeholder="Ваше имя" type="text" class="form-control dis-name" />
+										</div>
+									</dd>
+
+									<dt class="dis-mail">Ваш e-mail:</dt>
+									<dd>
+										<div class="form-group has-feedback dis-mail">
+                                            <input id="id_email" name="email" placeholder="Ваш E-mail" type="text" class="form-control dis-mail" />
+										</div>
+									</dd>
+
+									<dt class="dis-phone">Ваш телефон:</dt>
+									<dd>
+										<div class="form-group has-error has-feedback dis-phone">
+											<input id="id_phone" maxlength="20" name="phone" placeholder="Ваш телефон" type="text" class="form-control"/>
+										</div>
+									</dd>
+                                    <dt class="dis-name">Компания:</dt>
+									<dd>
+										<div class="form-group has-success has-feedback">
+											<input id="id_company" name="company" type="text" placeholder="Компания"/>
+										</div>
+									</dd>
+									<dt>Сообщение:</dt>
+									<dd>
+                                        <textarea cols="40" id="id_text" name="text" rows="5" placeholder="Текст Вашего сообщения..."></textarea>
+									</dd>
+
+									<dt></dt>
+									<br />
+									<dt>Прикрепить Файл:</dt>
+									<dd class="file">
+                                        <input id="id_file" name="file" type="file" class="file" />
+									</dd>
+
+									<dd>
+										<button class="button" type="submit"> Отправить </button>
+									</dd>
+								</dl>
+							</form>
+
+					</div>
+				</main>
+			</div>
+	{% endblock %}

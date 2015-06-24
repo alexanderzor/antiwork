@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block main_content %}
+
+			<div class="col-xs-9">
+				<!--------------------------------------- main -------------------------------------->
+				<main>
+					<div class="bread-crumb">
+						<a href="#">Главная</a>
+						<a href="#">Черный список: Отзывы</a>
+						<a class="active" href="{% url 'review' company.id %}">{{company.title}}</a>
+					</div>
+
+                  	<div class="article-header-red m-bottom">
+						<h2> {{company.title }} </h2>
+
+						<span class="pull-right location"> <i class="fa fa-map-marker"></i> {{company.city}} </span>
+					</div>
+					<div class="well">
+						<div class="row">
+							<div class="col-xs-3 p-right">
+								<div class="avatar">
+									<img src="{{company.image.url }}" />
+								</div>
+							</div>
+							<div class="col-xs-9">
+								<div class="information">
+									<a class="site" href="{{company.url}}"> {{company.url}} </a>
+								</div>
+								<h3 class="text-intro-md"> ОПИСАНИЕ КОМПАНИИ </h3>
+								<p>
+									{{company.description|safe}}
+								</p>
+							</div>
+						</div>
+					</div>
+
+{% for feedback in feedbacks %}
+                 <!--   <div class="new-comment">
+                <div class="comment-name">{{feedback.first_name }}</div>
+                <div class="comment-date">{{feedback.date}}</div>
+                <p class="comment-text">{{feedback.message}}</p>
+            </div>-->
+	<div class="article-header">
+						<h2> {{feedback.first_name }} </h2>
+						<span class="date pull-right"> {{feedback.date}} </span>
+					</div>
+					<div class="well">
+						<div class="row">
+
+							<div class="col-xs-9">
+								<p>
+									{{feedback.message}}
+								</p>
+
+							</div>
+						</div>
+					</div>
+                    {% endfor %}
+					<a href="{% url 'feedback' %}"><button class="button"> Добавить отзыв </button></a>
+				</main>
+			</div>
+	{% endblock %}
