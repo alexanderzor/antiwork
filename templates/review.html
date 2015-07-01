@@ -8,39 +8,38 @@
 					<div class="bread-crumb">
 						<a href="#">Главная</a>
 						<a href="#">Черный список: Отзывы</a>
-						<a class="active" href="{% url 'review' company.id %}">{{company.title}}</a>
+						<a class="active" href="{% url 'review' feedback.id %}">{{feedback.company}}</a>
 					</div>
 
                   	<div class="article-header-red m-bottom">
-						<h2> {{company.title }} </h2>
+						<h2> {{feedback.company }} </h2>
 
-						<span class="pull-right location"> <i class="fa fa-map-marker"></i> {{company.city}} </span>
+						<span class="pull-right location"> <i class="fa fa-map-marker"></i> {{feedback.city}} </span>
 					</div>
 					<div class="well">
 						<div class="row">
 							<div class="col-xs-3 p-right">
 								<div class="avatar">
-									<img src="{{company.image.url }}" />
+                                    {% if feedback.image %}
+									<img src="{{feedback.image.url }}" />
+                                    {% endif %}
 								</div>
 							</div>
 							<div class="col-xs-9">
 								<div class="information">
-									<a class="site" href="{{company.url}}"> {{company.url}} </a>
+									<a class="site" href="{{feedback.url}}"> {{feedback.url}} </a>
 								</div>
 								<h3 class="text-intro-md"> ОПИСАНИЕ КОМПАНИИ </h3>
 								<p>
-									{{company.description|safe}}
+									{{feedback.description|safe}}
 								</p>
 							</div>
 						</div>
 					</div>
 
-{% for feedback in feedbacks %}
-                 <!--   <div class="new-comment">
-                <div class="comment-name">{{feedback.first_name }}</div>
-                <div class="comment-date">{{feedback.date}}</div>
-                <p class="comment-text">{{feedback.message}}</p>
-            </div>-->
+<!--{% for comment in comments %}
+
+            </div>
 	<div class="article-header">
 						<h2> {{feedback.first_name }} </h2>
 						<span class="date pull-right"> {{feedback.date}} </span>
@@ -56,8 +55,40 @@
 							</div>
 						</div>
 					</div>
-                    {% endfor %}
-					<a href="{% url 'feedback' %}"><button class="button"> Добавить отзыв </button></a>
+                    {% endfor %}-->
+             <div class="comment-block-wrap">
+        <div class="comment-block">
+            <p class="add-comment">Добавить комментарий</p>
+            <div class="add-comment-block">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <dl class="dl-horizontal contacts">
+									<dt class="dis-name">Ваше имя:</dt>
+									<dd>
+                                        <div class="form-group has-success has-feedback">
+
+
+                    <input id="id_name" maxlength="20" name="name" type="text" class="form-control dis-name" placeholder="Имя" />
+                                            </div>
+									</dd>
+                        <dt>Комментарий:</dt>
+									<dd>
+                                        <textarea cols="40" id="id_content" name="content" rows="5" placeholder="Текст Вашего сообщения..."></textarea>
+									</dd>
+                        <button class="button" type="submit"> Добавить комментарий </button>
+                        </dl>
+                </form>
+            </div>
+            {% for comment in comments %}
+            <div class="new-comment">
+                <div class="comment-name">{{comment.author}}</div>
+                <div class="comment-date">{{comment.date}}</div>
+                <p class="comment-text">{{comment.content}}</p>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
 				</main>
 			</div>
 	{% endblock %}

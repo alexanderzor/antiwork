@@ -15,7 +15,7 @@
 					</div>
 					<div class="well">
 
-							<form action="" method="post">
+							<form enctype="multipart/form-data" action="" method="post">
                                 {% csrf_token %}
                                 <input name="what" id="anonymous" type="radio">
                                 <label class="label-1" for="anonymous">Анонимно</label>
@@ -42,7 +42,7 @@
 											<input id="id_phone" maxlength="20" name="phone" placeholder="Ваш телефон" type="text" class="form-control"/>
 										</div>
 									</dd>
-                                    <dt class="dis-name">Компания:</dt>
+                                    <dt>Компания:</dt>
 									<dd>
 										<div class="form-group has-success has-feedback">
 											<input id="id_company" name="company" type="text" placeholder="Компания"/>
@@ -50,16 +50,32 @@
 									</dd>
 									<dt>Сообщение:</dt>
 									<dd>
-                                        <textarea cols="40" id="id_text" name="text" rows="5" placeholder="Текст Вашего сообщения..."></textarea>
+                                        {{form.text}}
+                                        <!--<textarea cols="40" id="id_text" name="text" rows="5" placeholder="Текст Вашего сообщения..."></textarea>-->
+									</dd>
+                                    <dt>Изображение:</dt>
+                                    <dd class="file">
+                                        <input id="id_image" name="image" type="file" class="file" />
+                                        <!--<textarea cols="40" id="id_text" name="text" rows="5" placeholder="Текст Вашего сообщения..."></textarea>-->
+									</dd>
+                                    <dt>Cсылка:</dt>
+                                    <dd>
+                                         <div class="form-group has-success has-feedback">
+											<input id="id_url" name="url" type="text" placeholder="http://example.com.ua"/>
+										</div>
+                                        <!--<textarea cols="40" id="id_text" name="text" rows="5" placeholder="Текст Вашего сообщения..."></textarea>-->
+									</dd>
+                                    <dt>Город:</dt>
+                                    <dd>
+                                        <div class="form-group has-success has-feedback">
+											<input id="id_city" name="city" type="text" placeholder="Город"/>
+										</div>
+
+                                        <!--<textarea cols="40" id="id_text" name="text" rows="5" placeholder="Текст Вашего сообщения..."></textarea>-->
 									</dd>
 
 									<dt></dt>
 									<br />
-									<dt>Прикрепить Файл:</dt>
-									<dd class="file">
-                                        <input id="id_file" name="file" type="file" class="file" />
-									</dd>
-
 									<dd>
 										<button class="button" type="submit"> Отправить </button>
 									</dd>

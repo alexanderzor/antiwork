@@ -19,56 +19,94 @@
 					</p>
 
 
-                    {% for company in companies %}
-					<div class="well sm">
+                    {% for feedback in feedbacks %}
+					<!--<div class="well sm">
 						<div class="row">
 							<div class="col-xs-3 p-right">
-                                {% if company.image %}
-								<img class="company_image" src="{{ company.image.url }}" />
+                                {% if feedback.image %}
+								<img class="company_image" src="{{ feedback.image.url }}" />
                                 {% endif %}
 							</div>
 							<div class="col-xs-9 p-left">
 
                                     <div class="article-header">
-									<h2> {{ company.title }} </h2>
+									<h2><a href="{% url 'review' feedback.id %}" style="color: white;"> {{ feedback.company }}</a> </h2>
 								</div>
 
 								<div class="information">
-									<a class="reviews" href="{% url 'review' company.id %}"> {{company.feedbacks.count}} отзыва </a>
-									<a href="{% url 'review' company.id %}"> {{ company.city }} </a>
-									<a class="site" href="{{ company.url }}"> {{ company.url }} </a>
+									<a class="reviews" href="{% url 'review' feedback.id %}"> {{feedback.comments.count}} комментарий </a>
+									<a href="{% url 'review' feedback.id %}"> {{ feedback.first_name }} </a>
+									<a class="site" href="{{ feedback.url }}"> {{ feedback.url }} </a>
 								</div>
 
 								<p>
-									{{ company.short_description|safe}}
+									{{ feedback.message|safe}}
 								</p>
-								<a href="{% url 'review' company.id %}" class="show"> . . .</a>
+								<a href="{% url 'review' feedback.id %}" class="show"> . . .</a>
 							</div>
 						</div>
 
+					</div>
+                    <div class="article-header-red m-bottom">
+						<h2> {{feedback.company }} </h2>
+
+						<span class="pull-right location"> <i class="fa fa-map-marker"></i> {{feedback.city}} </span>
+					</div>-->
+                    {% if feedback.anon %}
+                    <div class="article-header-red m-bottom">
+                        {% else %}
+                        <div class="article-header">
+                            {% endif %}
+						<h2><a href="{% url 'review' feedback.id %}" style="color: white;"> {{feedback.company }}</a> </h2>
+                        {% if feedback.city %}
+						<span class="pull-right location"> <i class="fa fa-map-marker"></i> {{feedback.city}} </span>
+                            {% endif %}
+					</div>
+					<div class="well">
+						<div class="row">
+							<div class="col-xs-3 p-right">
+								<div class="avatar">
+                                    {% if feedback.image %}
+									<img src="{{feedback.image.url }}" />
+                                    {% endif %}
+								</div>
+							</div>
+							<div class="col-xs-9">
+								<div class="information">
+                                    {% if feedback.comments.count %}
+									<a class="reviews" href="{% url 'review' feedback.id %}"> {{feedback.comments.count}} комментарий </a>
+                                    {% endif %}
+									<a href="{% url 'review' feedback.id %}"> {{ feedback.first_name }} </a>
+									<a class="site" href="{{ feedback.url }}"> {{ feedback.url }} </a>
+								</div>
+								<p>
+									{{feedback.description|safe}}
+								</p>
+                                <a href="{% url 'review' feedback.id %}" class="show"> . . .</a>
+							</div>
+						</div>
 					</div>
                     {% endfor %}
 
 
 
-					<ul class="pagination">
-						<li class="active"><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">...</a></li>
-						<li><a href="#">24</a></li>
-						<li>
-							<a href="#" class="pull-right">
-								<i class="fa fa-chevron-right"></i>
-							</a>
-						</li>
-						<li class="disabled pull-right">
-							<a href="#">
-								<i class="fa fa-chevron-left"></i>
-							</a>
-						</li>
-					</ul>
+
+					<div class="pagination">
+    <span class="step-links">
+        {% if feedbacks.has_previous %}
+            <a href="?page={{ feedbacks.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ feedbacks.number }} of {{ feedbacks.paginator.num_pages }}.
+        </span>
+
+        {% if feedbacks.has_next %}
+            <a href="?page={{ feedbacks.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+                        </div>
 				</main>
 			</div>
 {% endblock %}

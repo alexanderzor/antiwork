@@ -1,9 +1,9 @@
 from django.contrib import admin
-from models import Feedback, New, Company, Comment
+from models import Feedback, New, Company, NewsComment, FeedbackComment
 
 
 class FeedBackAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'email', )
+    list_display = ('first_name', 'email', 'active', )
 
 
     class Meta:
@@ -26,10 +26,19 @@ class NewsAdmin(admin.ModelAdmin):
         model = New
 admin.site.register(New, NewsAdmin)
 
-class CommentAdmin(admin.ModelAdmin):
+class NewsCommentAdmin(admin.ModelAdmin):
     list_display = ('author', 'date', )
 
 
     class Meta:
-        model = Comment
-admin.site.register(Comment, CommentAdmin)
+        model = NewsComment
+admin.site.register(NewsComment, NewsCommentAdmin)
+
+
+class FeedbackCommentAdmin(admin.ModelAdmin):
+    list_display = ('author', 'date', )
+
+
+    class Meta:
+        model = FeedbackComment
+admin.site.register(FeedbackComment, FeedbackCommentAdmin)

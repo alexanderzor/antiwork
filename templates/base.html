@@ -20,6 +20,8 @@
 	<link href="{% static 'css/jquery-ui.css' %}" rel="stylesheet" type="text/css">
 	<link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
 	<link href="{% static 'css/forms.css' %}" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+    <script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
 </head>
 
 <body>
@@ -36,6 +38,10 @@
                     <ul id="navigation" class="nav pull-left">
                         <li>
                             <a href= "{% url 'feedback' %}" class="nav-butt"> Написать отзыв </a>
+
+                        </li>
+                         <li>
+                            <a href= "{% url 'index' %}" class="nav-butt"> Отзывы </a>
 
                         </li>
                         <li>
